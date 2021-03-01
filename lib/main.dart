@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:progress_job_hunting_app/page/screen/main_screen.dart';
+import 'package:progress_job_hunting_app/view/screen/main_screen.dart';
 
 void main() {
   runApp(MyApp());

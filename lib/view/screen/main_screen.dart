@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:progress_job_hunting_app/view/page/add_company_page.dart';
+import 'package:progress_job_hunting_app/view/page/state_progress_in_company_page.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    _page = [];
+    _page = [AddCompanyPage(), StateProgressInCompanyPage()];
     super.initState();
   }
 
