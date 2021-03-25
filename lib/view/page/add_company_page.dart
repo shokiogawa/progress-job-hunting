@@ -13,9 +13,20 @@ class AddCompanyPage extends HookWidget {
     final state = useProvider(addCompanyPageController.state);
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(icon: Text("保存"), onPressed:(){
-          context.read(addCompanyPageController).saveCompanyInfo(state.companyState, _companyNameController.text, _memoController.text);
-        })],
+        actions: state.isLoading
+            ? [
+              Center(child: Text("保存中...")),
+              ]
+            : [
+                IconButton(
+                    icon: Text("保存"),
+                    onPressed: () {
+                      context.read(addCompanyPageController).saveCompanyInfo(
+                          state.companyState,
+                          _companyNameController.text,
+                          _memoController.text);
+                    })
+              ],
         title: Text("会社を入力"),
         centerTitle: true,
       ),
@@ -27,7 +38,7 @@ class AddCompanyPage extends HookWidget {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30),
               child: Consumer(
-                builder: (context, watch, child){
+                builder: (context, watch, child) {
                   final state = watch(addCompanyPageController.state);
                   return DropdownButton<String>(
                     isExpanded: true,
@@ -37,7 +48,9 @@ class AddCompanyPage extends HookWidget {
                       return DropdownMenuItem(value: value, child: Text(value));
                     }).toList(),
                     onChanged: (companyState) {
-                      context.read(addCompanyPageController).fetchCompanyState(companyState);
+                      context
+                          .read(addCompanyPageController)
+                          .fetchCompanyState(companyState);
                     },
                   );
                 },

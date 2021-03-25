@@ -17,11 +17,13 @@ class _$AddCompanyPageStateTearOff {
   _AddCompanyPageState call(
       {String companyState = "",
       String companyName = "",
-      String companyEx = ""}) {
+      String companyEx = "",
+      bool isLoading = false}) {
     return _AddCompanyPageState(
       companyState: companyState,
       companyName: companyName,
       companyEx: companyEx,
+      isLoading: isLoading,
     );
   }
 }
@@ -35,6 +37,7 @@ mixin _$AddCompanyPageState {
   String get companyState;
   String get companyName;
   String get companyEx;
+  bool get isLoading;
 
   $AddCompanyPageStateCopyWith<AddCompanyPageState> get copyWith;
 }
@@ -44,7 +47,11 @@ abstract class $AddCompanyPageStateCopyWith<$Res> {
   factory $AddCompanyPageStateCopyWith(
           AddCompanyPageState value, $Res Function(AddCompanyPageState) then) =
       _$AddCompanyPageStateCopyWithImpl<$Res>;
-  $Res call({String companyState, String companyName, String companyEx});
+  $Res call(
+      {String companyState,
+      String companyName,
+      String companyEx,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -61,6 +68,7 @@ class _$AddCompanyPageStateCopyWithImpl<$Res>
     Object companyState = freezed,
     Object companyName = freezed,
     Object companyEx = freezed,
+    Object isLoading = freezed,
   }) {
     return _then(_value.copyWith(
       companyState: companyState == freezed
@@ -69,6 +77,7 @@ class _$AddCompanyPageStateCopyWithImpl<$Res>
       companyName:
           companyName == freezed ? _value.companyName : companyName as String,
       companyEx: companyEx == freezed ? _value.companyEx : companyEx as String,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
     ));
   }
 }
@@ -80,7 +89,11 @@ abstract class _$AddCompanyPageStateCopyWith<$Res>
           $Res Function(_AddCompanyPageState) then) =
       __$AddCompanyPageStateCopyWithImpl<$Res>;
   @override
-  $Res call({String companyState, String companyName, String companyEx});
+  $Res call(
+      {String companyState,
+      String companyName,
+      String companyEx,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -99,6 +112,7 @@ class __$AddCompanyPageStateCopyWithImpl<$Res>
     Object companyState = freezed,
     Object companyName = freezed,
     Object companyEx = freezed,
+    Object isLoading = freezed,
   }) {
     return _then(_AddCompanyPageState(
       companyState: companyState == freezed
@@ -107,6 +121,7 @@ class __$AddCompanyPageStateCopyWithImpl<$Res>
       companyName:
           companyName == freezed ? _value.companyName : companyName as String,
       companyEx: companyEx == freezed ? _value.companyEx : companyEx as String,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
     ));
   }
 }
@@ -114,10 +129,14 @@ class __$AddCompanyPageStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_AddCompanyPageState implements _AddCompanyPageState {
   _$_AddCompanyPageState(
-      {this.companyState = "", this.companyName = "", this.companyEx = ""})
+      {this.companyState = "",
+      this.companyName = "",
+      this.companyEx = "",
+      this.isLoading = false})
       : assert(companyState != null),
         assert(companyName != null),
-        assert(companyEx != null);
+        assert(companyEx != null),
+        assert(isLoading != null);
 
   @JsonKey(defaultValue: "")
   @override
@@ -128,10 +147,13 @@ class _$_AddCompanyPageState implements _AddCompanyPageState {
   @JsonKey(defaultValue: "")
   @override
   final String companyEx;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'AddCompanyPageState(companyState: $companyState, companyName: $companyName, companyEx: $companyEx)';
+    return 'AddCompanyPageState(companyState: $companyState, companyName: $companyName, companyEx: $companyEx, isLoading: $isLoading)';
   }
 
   @override
@@ -146,7 +168,10 @@ class _$_AddCompanyPageState implements _AddCompanyPageState {
                     .equals(other.companyName, companyName)) &&
             (identical(other.companyEx, companyEx) ||
                 const DeepCollectionEquality()
-                    .equals(other.companyEx, companyEx)));
+                    .equals(other.companyEx, companyEx)) &&
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)));
   }
 
   @override
@@ -154,7 +179,8 @@ class _$_AddCompanyPageState implements _AddCompanyPageState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(companyState) ^
       const DeepCollectionEquality().hash(companyName) ^
-      const DeepCollectionEquality().hash(companyEx);
+      const DeepCollectionEquality().hash(companyEx) ^
+      const DeepCollectionEquality().hash(isLoading);
 
   @override
   _$AddCompanyPageStateCopyWith<_AddCompanyPageState> get copyWith =>
@@ -166,7 +192,8 @@ abstract class _AddCompanyPageState implements AddCompanyPageState {
   factory _AddCompanyPageState(
       {String companyState,
       String companyName,
-      String companyEx}) = _$_AddCompanyPageState;
+      String companyEx,
+      bool isLoading}) = _$_AddCompanyPageState;
 
   @override
   String get companyState;
@@ -174,6 +201,8 @@ abstract class _AddCompanyPageState implements AddCompanyPageState {
   String get companyName;
   @override
   String get companyEx;
+  @override
+  bool get isLoading;
   @override
   _$AddCompanyPageStateCopyWith<_AddCompanyPageState> get copyWith;
 }
