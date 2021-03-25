@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:progress_job_hunting_app/infrastructure/repository/company_repository.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 part 'add_company_page_controller.freezed.dart';
@@ -10,13 +11,17 @@ abstract class AddCompanyPageState with _$AddCompanyPageState {
     @Default("") String companyName,
     @Default("") String companyEx,
   }) = _AddCompanyPageState;
-
 }
 
-class AddCompanyPageController extends StateNotifier<AddCompanyPageState>{
-  AddCompanyPageController() : super(AddCompanyPageState());
+class AddCompanyPageController extends StateNotifier<AddCompanyPageState> {
+  final CompanyRepository companyRepository;
 
-  Future<void> saveCompanyInfo(String companyState, String name, String ex) async{
-    state = state.copyWith(companyState: companyState, companyName: name, companyEx: ex);
+  AddCompanyPageController(this.companyRepository)
+      : super(AddCompanyPageState());
+
+  Future<void> saveCompanyInfo(
+      String companyState, String name, String ex) async {
+    state = state.copyWith(
+        companyState: companyState, companyName: name, companyEx: ex);
   }
 }
