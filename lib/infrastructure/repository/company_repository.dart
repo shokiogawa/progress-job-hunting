@@ -8,6 +8,7 @@ class CompanyRepository{
   Future<void>saveCompanyInfo(String companyState, String name, String ex) async{
     Company company;
     company = Company(companyState: companyState, companyName: name, companyEx: ex);
+    print("ここが会社の名前だよ" + company.companyName);
     await dataBaseManager.saveCompanyInfo(company);
   }
 }

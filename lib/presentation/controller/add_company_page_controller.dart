@@ -17,11 +17,16 @@ class AddCompanyPageController extends StateNotifier<AddCompanyPageState> {
   final CompanyRepository companyRepository;
 
   AddCompanyPageController(this.companyRepository)
-      : super(AddCompanyPageState());
+      : super(AddCompanyPageState(companyState: "説明会"));
 
   Future<void> saveCompanyInfo(
       String companyState, String name, String ex) async {
+    print("ここだよ" + state.companyState);
     await companyRepository.saveCompanyInfo(companyState, name, ex);
 
+  }
+
+  void fetchCompanyState(String companyState){
+    state = state.copyWith(companyState: companyState);
   }
 }
