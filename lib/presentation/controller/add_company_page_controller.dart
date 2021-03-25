@@ -21,7 +21,7 @@ class AddCompanyPageController extends StateNotifier<AddCompanyPageState> {
 
   Future<void> saveCompanyInfo(
       String companyState, String name, String ex) async {
-    state = state.copyWith(
-        companyState: companyState, companyName: name, companyEx: ex);
+    await companyRepository.saveCompanyInfo(companyState, name, ex);
+
   }
 }
