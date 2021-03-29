@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:progress_job_hunting_app/view/page/add_company_page.dart';
 import 'package:progress_job_hunting_app/view/screen/login_screen.dart';
 import 'package:progress_job_hunting_app/view/screen/main_screen.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       home: LoginScreen(),
       routes: {
-
+        '/input_company_page':(BuildContext context) => AddCompanyPage(),
       },
     );
   }

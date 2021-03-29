@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:progress_job_hunting_app/di.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final TextEditingController _mailController = TextEditingController();
@@ -39,6 +42,7 @@ class LoginScreen extends StatelessWidget {
               child: ListTile(
                 leading: Icon(Icons.vpn_key),
                 title: TextField(
+                  obscureText: true,
                   controller: _passwordController,
                   decoration: InputDecoration(
                       hintText: "パスワード入力",
@@ -56,7 +60,11 @@ class LoginScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   primary: Colors.orangeAccent.withOpacity(1)
                 ),
-                  onPressed: () {},
+                  onPressed: () {
+                  context.read(logInPageController).signIn(_mailController.text, _passwordController.text).then((value){
+                    Navigator.of(context).pushReplacementNamed('/input_company_page');
+                  });
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Text("ログインする"),
