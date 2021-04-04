@@ -22,12 +22,9 @@ class AddCompanyPageController extends StateNotifier<AddCompanyPageState> {
 
   Future<void> saveCompanyInfo(
       String companyState, String name, String ex) async {
-    print("ここだよ" + state.companyState);
     state = state.copyWith(isLoading: true);
-    print(state.isLoading);
     await companyRepository.saveCompanyInfo(companyState, name, ex).then((value){
       state = state.copyWith(isLoading: false);
-      print(state.isLoading);
     });
 
   }

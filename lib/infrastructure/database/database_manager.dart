@@ -7,19 +7,14 @@ class DataBaseManager {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Future<void> saveCompanyInfo(Company company) async {
-    print("databaseだよ");
-    // await Future.delayed(Duration(seconds: 5),_onTime);
     try {
       await _db
           .collection("company")
           .doc(company.companyName)
           .set(company.toMap());
     } catch (error) {
-      print(error.toString());
+      print("エラーが出たよ" + error.toString());
       // throw Future.error(error);
     }
-  }
-  void _onTime(){
-    print("test");
   }
 }
