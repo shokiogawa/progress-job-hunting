@@ -15,7 +15,7 @@ class AddCompanyPage extends HookWidget {
       appBar: AppBar(
         actions: state.isLoading
             ? [
-              Center(child: Text("保存中...")),
+                Center(child: Text("保存中...")),
               ]
             : [
                 IconButton(
