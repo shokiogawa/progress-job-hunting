@@ -2,13 +2,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPageController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  static String userId;
 
   Future<void> signIn(String email, String password) async {
     try {
       print("signIn");
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((value) {
+        userId = _auth.currentUser.uid;
+        print(userId);
+      });
     } catch (error) {
-      Future.error(error);
+      throw Future.error(error);
     }
   }
 
@@ -24,9 +30,10 @@ class LoginPageController {
   }
 
   Future<void> logOut() async {
-    await _auth
-        .signOut()
-        .then((value) => print("ログアウト"))
-        .catchError((error) => print(error));
+    try {
+      await _auth.signOut();
+    } catch (error) {
+      throw Future.error(error);
+    }
   }
 }

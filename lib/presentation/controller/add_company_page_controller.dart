@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:progress_job_hunting_app/infrastructure/repository/company_repository.dart';
+import 'package:progress_job_hunting_app/presentation/controller/login_page_controller.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 part 'add_company_page_controller.freezed.dart';
@@ -23,7 +24,7 @@ class AddCompanyPageController extends StateNotifier<AddCompanyPageState> {
   Future<void> saveCompanyInfo(
       String companyState, String name, String ex) async {
     state = state.copyWith(isLoading: true);
-    await companyRepository.saveCompanyInfo(companyState, name, ex).then((value){
+    await companyRepository.saveCompanyInfo(companyState, name, ex, LoginPageController.userId).then((value){
       state = state.copyWith(isLoading: false);
     });
 

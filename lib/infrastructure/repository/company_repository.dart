@@ -5,9 +5,10 @@ class CompanyRepository{
   final DataBaseManager dataBaseManager;
   CompanyRepository(this.dataBaseManager);
 
-  Future<void>saveCompanyInfo(String companyState, String name, String ex) async{
+  //companyクラスに入れdatabaseにおくる処理。
+  Future<void>saveCompanyInfo(String companyState, String name, String ex, String userId) async{
     Company company;
-    company = Company(companyState: companyState, companyName: name, companyEx: ex);
+    company = Company(companyState: companyState, companyName: name, companyEx: ex, userId: userId);
     print("ここが会社の名前だよ" + company.companyName);
     await dataBaseManager.saveCompanyInfo(company);
   }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:progress_job_hunting_app/di.dart';
+import 'package:progress_job_hunting_app/presentation/controller/login_page_controller.dart';
 
 class AddCompanyPage extends HookWidget {
   final TextEditingController _companyNameController = TextEditingController();
@@ -12,6 +13,14 @@ class AddCompanyPage extends HookWidget {
   Widget build(BuildContext context) {
     final state = useProvider(addCompanyPageController.state);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.read(logInPageController).logOut().then((value){
+            Navigator.of(context)
+                .pushReplacementNamed('/login_page');
+          });
+        },
+      ),
       appBar: AppBar(
         actions: state.isLoading
             ? [
