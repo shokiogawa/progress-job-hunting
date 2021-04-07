@@ -57,13 +57,16 @@ class LoginScreen extends HookWidget {
             ),
             Container(
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.orangeAccent.withOpacity(1)
-                ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.orangeAccent.withOpacity(1)),
                   onPressed: () {
-                  context.read(logInPageController).signIn(_mailController.text, _passwordController.text).then((value){
-                    Navigator.of(context).pushReplacementNamed('/input_company_page');
-                  });
+                    context
+                        .read(logInPageController)
+                        .signIn(_mailController.text, _passwordController.text)
+                        .then((value) {
+                      Navigator.of(context)
+                          .pushReplacementNamed('/main_screen');
+                    });
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
