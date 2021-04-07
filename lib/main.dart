@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
             return snapshot.data == false ? LoginScreen() : MainScreen();
           }),
       routes: {
+        '/main_screen_page' : (BuildContext context) => MainScreen(),
         '/login_page': (BuildContext context) => LoginScreen(),
         '/input_company_page': (BuildContext context) => AddCompanyPage(),
       },

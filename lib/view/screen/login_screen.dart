@@ -65,7 +65,7 @@ class LoginScreen extends HookWidget {
                         .signIn(_mailController.text, _passwordController.text)
                         .then((value) {
                       Navigator.of(context)
-                          .pushReplacementNamed('/input_company_page');
+                          .pushReplacementNamed('/main_screen_page');
                     }).catchError((error) {
                       print("ログイン失敗: " + error.toString());
                     });
