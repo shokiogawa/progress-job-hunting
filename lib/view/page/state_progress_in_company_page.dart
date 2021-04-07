@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 
 class StateProgressInCompanyPage extends StatefulWidget {
   @override
-  _StateProgressInCompanyPageState createState() => _StateProgressInCompanyPageState();
+  _StateProgressInCompanyPageState createState() =>
+      _StateProgressInCompanyPageState();
 }
 
-class _StateProgressInCompanyPageState extends State<StateProgressInCompanyPage> {
+class _StateProgressInCompanyPageState
+    extends State<StateProgressInCompanyPage> {
   List<String> lists1 = ["ドコドア", "relicsss", "smhc"];
   List<String> list2 = ["DeNA", "ヤクルト", "マツダ"];
   List<String> list3 = ["diverse", "mixe"];
+
   @override
   Widget build(BuildContext context) {
     List<Widget> draggableList1 = lists1
         .map((name) => Draggable(
-      data: name,
+            data: name,
             onDragCompleted: () {
               print("Targetにきた" + name);
             },
@@ -58,7 +61,7 @@ class _StateProgressInCompanyPageState extends State<StateProgressInCompanyPage>
               ),
             ),
             DragTarget(
-              builder: (context, accepted, rejected){
+              builder: (context, accepted, rejected) {
                 return Container(
                   child: Column(
                     children: [...draggableList2],
@@ -67,7 +70,7 @@ class _StateProgressInCompanyPageState extends State<StateProgressInCompanyPage>
                   color: Colors.blueGrey,
                 );
               },
-              onAccept: (value){
+              onAccept: (value) {
                 setState(() {
                   // lists1.removeAt(0);
                   // list2.add(value);
