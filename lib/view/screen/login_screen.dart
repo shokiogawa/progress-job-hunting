@@ -62,7 +62,7 @@ class LoginScreen extends HookWidget {
                 ),
                   onPressed: () {
                   context.read(logInPageController).signIn(_mailController.text, _passwordController.text).then((value){
-                    Navigator.of(context).pushReplacementNamed('/input_company_page');
+                    Navigator.of(context).pushReplacementNamed('/main_screen');
                   });
                   },
                   child: Padding(

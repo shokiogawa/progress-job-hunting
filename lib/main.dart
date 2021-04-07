@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       home: LoginScreen(),
       routes: {
+        '/main_screen': (BuildContext context) => MainScreen(),
         '/input_company_page':(BuildContext context) => AddCompanyPage(),
       },
     );
