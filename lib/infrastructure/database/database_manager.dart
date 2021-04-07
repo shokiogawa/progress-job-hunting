@@ -7,7 +7,7 @@ class DataBaseManager {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Future<void> saveCompanyInfo(Company company) async {
-    print("databaseだよ");
+    print(company.toMap());
     // await Future.delayed(Duration(seconds: 5),_onTime);
     try {
       await _db
