@@ -15,11 +15,13 @@ class _$AddCompanyPageStateTearOff {
 
 // ignore: unused_element
   _AddCompanyPageState call(
-      {String companyState = "",
+      {CompanyStatus companyStatus,
+      String companyState = "",
       String companyName = "",
       String companyEx = "",
       bool isLoading = false}) {
     return _AddCompanyPageState(
+      companyStatus: companyStatus,
       companyState: companyState,
       companyName: companyName,
       companyEx: companyEx,
@@ -34,6 +36,7 @@ const $AddCompanyPageState = _$AddCompanyPageStateTearOff();
 
 /// @nodoc
 mixin _$AddCompanyPageState {
+  CompanyStatus get companyStatus;
   String get companyState;
   String get companyName;
   String get companyEx;
@@ -48,7 +51,8 @@ abstract class $AddCompanyPageStateCopyWith<$Res> {
           AddCompanyPageState value, $Res Function(AddCompanyPageState) then) =
       _$AddCompanyPageStateCopyWithImpl<$Res>;
   $Res call(
-      {String companyState,
+      {CompanyStatus companyStatus,
+      String companyState,
       String companyName,
       String companyEx,
       bool isLoading});
@@ -65,12 +69,16 @@ class _$AddCompanyPageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object companyStatus = freezed,
     Object companyState = freezed,
     Object companyName = freezed,
     Object companyEx = freezed,
     Object isLoading = freezed,
   }) {
     return _then(_value.copyWith(
+      companyStatus: companyStatus == freezed
+          ? _value.companyStatus
+          : companyStatus as CompanyStatus,
       companyState: companyState == freezed
           ? _value.companyState
           : companyState as String,
@@ -90,7 +98,8 @@ abstract class _$AddCompanyPageStateCopyWith<$Res>
       __$AddCompanyPageStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String companyState,
+      {CompanyStatus companyStatus,
+      String companyState,
       String companyName,
       String companyEx,
       bool isLoading});
@@ -109,12 +118,16 @@ class __$AddCompanyPageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object companyStatus = freezed,
     Object companyState = freezed,
     Object companyName = freezed,
     Object companyEx = freezed,
     Object isLoading = freezed,
   }) {
     return _then(_AddCompanyPageState(
+      companyStatus: companyStatus == freezed
+          ? _value.companyStatus
+          : companyStatus as CompanyStatus,
       companyState: companyState == freezed
           ? _value.companyState
           : companyState as String,
@@ -129,7 +142,8 @@ class __$AddCompanyPageStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_AddCompanyPageState implements _AddCompanyPageState {
   _$_AddCompanyPageState(
-      {this.companyState = "",
+      {this.companyStatus,
+      this.companyState = "",
       this.companyName = "",
       this.companyEx = "",
       this.isLoading = false})
@@ -138,6 +152,8 @@ class _$_AddCompanyPageState implements _AddCompanyPageState {
         assert(companyEx != null),
         assert(isLoading != null);
 
+  @override
+  final CompanyStatus companyStatus;
   @JsonKey(defaultValue: "")
   @override
   final String companyState;
@@ -153,13 +169,16 @@ class _$_AddCompanyPageState implements _AddCompanyPageState {
 
   @override
   String toString() {
-    return 'AddCompanyPageState(companyState: $companyState, companyName: $companyName, companyEx: $companyEx, isLoading: $isLoading)';
+    return 'AddCompanyPageState(companyStatus: $companyStatus, companyState: $companyState, companyName: $companyName, companyEx: $companyEx, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _AddCompanyPageState &&
+            (identical(other.companyStatus, companyStatus) ||
+                const DeepCollectionEquality()
+                    .equals(other.companyStatus, companyStatus)) &&
             (identical(other.companyState, companyState) ||
                 const DeepCollectionEquality()
                     .equals(other.companyState, companyState)) &&
@@ -177,6 +196,7 @@ class _$_AddCompanyPageState implements _AddCompanyPageState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(companyStatus) ^
       const DeepCollectionEquality().hash(companyState) ^
       const DeepCollectionEquality().hash(companyName) ^
       const DeepCollectionEquality().hash(companyEx) ^
@@ -190,11 +210,14 @@ class _$_AddCompanyPageState implements _AddCompanyPageState {
 
 abstract class _AddCompanyPageState implements AddCompanyPageState {
   factory _AddCompanyPageState(
-      {String companyState,
+      {CompanyStatus companyStatus,
+      String companyState,
       String companyName,
       String companyEx,
       bool isLoading}) = _$_AddCompanyPageState;
 
+  @override
+  CompanyStatus get companyStatus;
   @override
   String get companyState;
   @override
