@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:progress_job_hunting_app/di.dart';
+import 'package:progress_job_hunting_app/domain/value_object/company_status.dart';
+import 'package:progress_job_hunting_app/view/utility/data/company_status.dart';
 import 'package:progress_job_hunting_app/presentation/controller/login_page_controller.dart';
+
 
 class AddCompanyPage extends HookWidget {
   final TextEditingController _companyNameController = TextEditingController();
@@ -31,7 +34,7 @@ class AddCompanyPage extends HookWidget {
                     icon: Text("保存"),
                     onPressed: () {
                       context.read(addCompanyPageController).saveCompanyInfo(
-                          state.companyState,
+                          state.companyStatus,
                           _companyNameController.text,
                           _memoController.text);
                     })
@@ -49,12 +52,12 @@ class AddCompanyPage extends HookWidget {
               child: Consumer(
                 builder: (context, watch, child) {
                   final state = watch(addCompanyPageController.state);
-                  return DropdownButton<String>(
+                  return DropdownButton(
                     isExpanded: true,
-                    value: state.companyState,
-                    items: ["説明会", "ES提出", "一次選考", "二次選考", "三次選考", "最終選考"]
-                        .map((String value) {
-                      return DropdownMenuItem(value: value, child: Text(value));
+                    value: state.companyStatus,
+                    items: companyStatus.map((CompanyStatus status) {
+                      return DropdownMenuItem(
+                          value: status, child: Text(status.status));
                     }).toList(),
                     onChanged: (companyState) {
                       context
