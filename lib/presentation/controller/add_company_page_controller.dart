@@ -1,8 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:progress_job_hunting_app/domain/value_object/company_status.dart';
 import 'package:progress_job_hunting_app/infrastructure/repository/company_repository.dart';
-import 'package:progress_job_hunting_app/view/utility/data/company_status.dart';
 import 'package:state_notifier/state_notifier.dart';
+import 'package:progress_job_hunting_app/presentation/controller/login_page_controller.dart';
+import 'package:progress_job_hunting_app/view/utility/data/company_status.dart';
+
 
 part 'add_company_page_controller.freezed.dart';
 
