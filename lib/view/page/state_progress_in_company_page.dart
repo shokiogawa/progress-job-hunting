@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_job_hunting_app/view/component/draggable_widget.dart';
 
 class StateProgressInCompanyPage extends StatefulWidget {
   @override
@@ -14,37 +15,12 @@ class _StateProgressInCompanyPageState
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> draggableList1 = lists1
-        .map((name) => Draggable(
-            data: name,
-            onDragCompleted: () {
-              print("Targetにきた" + name);
-            },
-            child: Card(
-              child: Text(name),
-            ),
-            childWhenDragging: Card(
-              child: Text(
-                name,
-                style: TextStyle(color: Colors.grey),
-              ),
-            ),
-            feedback: Card(child: Text(name))))
-        .toList();
-    List<Widget> draggableList2 = list2
-        .map((name) => Draggable(
-            child: Card(
-              child: Text(name),
-            ),
-            feedback: Card(child: Text(name))))
-        .toList();
-    List<Widget> draggableList3 = list3
-        .map((name) => Draggable(
-            child: Card(
-              child: Text(name),
-            ),
-            feedback: Card(child: Text(name))))
-        .toList();
+    List<Widget> draggableList1 =
+        lists1.map((name) => DraggableWidget(name)).toList();
+    List<Widget> draggableList2 =
+        list2.map((name) => DraggableWidget(name)).toList();
+    List<Widget> draggableList3 =
+        list3.map((name) => DraggableWidget((name))).toList();
     return Scaffold(
       appBar: AppBar(
         title: Text("選考状況"),
@@ -52,39 +28,11 @@ class _StateProgressInCompanyPageState
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 200,
-              color: Colors.orangeAccent,
-              child: Column(
-                children: [...draggableList1],
-              ),
-            ),
-            DragTarget(
-              builder: (context, accepted, rejected) {
-                return Container(
-                  child: Column(
-                    children: [...draggableList2],
-                  ),
-                  height: 200,
-                  color: Colors.blueGrey,
-                );
-              },
-              onAccept: (value) {
-                setState(() {
-                  // lists1.removeAt(0);
-                  // list2.add(value);
-                });
-                print(lists1.length.toString());
-              },
-            ),
-            Container(
-              child: Column(
-                children: [...draggableList3],
-              ),
-              height: 200,
-              color: Colors.red,
-            ),
+            DragTargetWidget(draggableList1, Colors.amber),
+            DragTargetWidget(draggableList2, Colors.blueGrey),
+            DragTargetWidget(draggableList3, Colors.red)
           ],
         ),
       ),
