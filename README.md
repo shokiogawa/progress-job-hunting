@@ -4,6 +4,7 @@ A new Flutter application.
 
 ## アプリ概要
 就活生が就活状況を管理できるアプリ。
+<br>
 フロントエンド: Flutter
 <br>
 アーキテクチャー: DDD予定
